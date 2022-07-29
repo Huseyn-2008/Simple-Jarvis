@@ -28,7 +28,6 @@ opts = {
     "bye": ('пока джарвис','спокойной ночи'),
     "google": ('открой google'),
     "camcam": ('камера', 'включи камеру', 'открой доступ к камере'),
-    "ramadan": ('рамадан'),
     "thank": ('спасибо')
 
 }
@@ -93,9 +92,6 @@ def hi(task):
     if task.startswith(opts["camcam"]):
         os.startfile("C:\Program Files\dist\calc2077.exe")
         start.say(random.choice(finish))
-        start.runAndWait()
-    if task.startswith(opts["ramadan"]):
-        start.say("рамадан байрамыныз мубарак")
         start.runAndWait()
     if task.startswith(opts["thank"]):
         start.say("всё что угодно")
