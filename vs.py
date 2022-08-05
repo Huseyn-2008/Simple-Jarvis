@@ -6,6 +6,7 @@ import os
 import random
 from time import sleep
 import pyautogui
+import winshell
 
 
 
@@ -28,7 +29,8 @@ opts = {
     "bye": ('пока джарвис','спокойной ночи'),
     "google": ('открой google'),
     "camcam": ('камера', 'включи камеру', 'открой доступ к камере'),
-    "thank": ('спасибо')
+    "thank": ('спасибо'),
+    "bin": ('очистить корзину')
 
 }
 
@@ -62,6 +64,10 @@ def hi(task):
         start.runAndWait()
     if task.startswith(opts["note"]):
         os.system(' start notepad')
+        start.say(random.choice(finish))
+        start.runAndWait()
+    if task.startswith(opts["bin"]):
+        bin()
         start.say(random.choice(finish))
         start.runAndWait()
     if task.startswith(opts["sublime"]):
@@ -98,7 +104,14 @@ def hi(task):
         start.runAndWait()
 
 
-
+def bin():
+    try:
+        winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=True)
+        start.say("корзина очищена")
+        start.runAndWait()
+    except:
+        start.say("корзина уже была очищена")
+        start.runAndWait()
 def request(task):
     hi(task)
 
